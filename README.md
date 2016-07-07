@@ -4,7 +4,7 @@ Create self-guided workshops using electron.
 
 ## Work in progress
 
-Basically nothing works yet :laugh:. But check back! I'm not done yet!
+Basically nothing works yet 😬. But check back! I'm not done yet!
 
 ## Open Questions
 
