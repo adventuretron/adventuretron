@@ -11,7 +11,7 @@ Basically nothing works yet 😬. But check back! I'm not done yet!
 This project is inspired by a number of others:
 
 - The original terminal-based packages for creating [NodeSchool](http://nodeschool.io/#workshoppers) workshops: [adventure](https://github.com/substack/adventure) & [workshopper](https://github.com/workshopper/workshopper).
-- [jlord]'s awesome [git-it-electron](https://github.com/jlord/git-it-electron) workshop.
+- [jlord](https://github.com/jlord)'s awesome [git-it-electron](https://github.com/jlord/git-it-electron) workshop.
 - [shader school](https://github.com/stackgl/shader-school) & [webgl-workshop](https://github.com/stackgl/webgl-workshop) by [hughsk](https://github.com/hughsk) & [mikolalysenko](https://github.com/mikolalysenko)
 
 ## Why make this?
