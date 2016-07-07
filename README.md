@@ -10,13 +10,13 @@ Basically nothing works yet 😬. But check back! I'm not done yet!
 
 This project is inspired by a number of others:
 
-- The original terminal-based packages for creating [NodeSchool](http://nodeschool.io/#workshoppers) workshops: adventure & workshopper.
+- The original terminal-based packages for creating [NodeSchool](http://nodeschool.io/#workshoppers) workshops: [adventure](https://github.com/substack/adventure) & [workshopper](https://github.com/workshopper/workshopper).
 - [jlord]'s awesome [git-it-electron](https://github.com/jlord/git-it-electron) workshop.
 - [shader school](https://github.com/stackgl/shader-school) & [webgl-workshop](https://github.com/stackgl/webgl-workshop) by [hughsk](https://github.com/hughsk) & [mikolalysenko](https://github.com/mikolalysenko)
 
 ## Why make this?
 
-After making [javascripting]() and running a few nodeschool events, I've found that folks struggle with reading all the instructions in the terminal. In part this can be due to cross-platform issues with node. Trying to have colorized terminal output that works for everybody seems weirdly difficult.
+After making [javascripting](https://github.com/sethvincent/javascripting) and running a few nodeschool events, I've found that folks struggle with reading all the instructions in the terminal. In part this can be due to cross-platform issues with node. Trying to have colorized terminal output that works for everybody seems weirdly difficult.
 
 Electron can help with this. [git-it-electron](https://github.com/jlord/git-it-electron) is a great example of how we can have clear, readable instructions in a desktop app that still encourages people to learn using the same tools they'd regularly use doing this kind of work.
 
