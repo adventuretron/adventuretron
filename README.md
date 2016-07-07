@@ -8,7 +8,7 @@ Basically nothing works yet :laugh:. But check back! I'm not done yet!
 
 ## Open Questions
 
-This is still early in development, so there are a few undecided elements of this project that you might be able to help with. Each item below has a corresponding [issue](/issues).
+This is still early in development, so there are a few undecided elements of this project that you might be able to help with. Each item below has a corresponding [issue](https://github.com/sethvincent/adventuretron/issues).
 
 ### Would a different name be better?
 
