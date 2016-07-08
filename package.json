@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "choo": "^3.0.1",
-    "choo-log": "^1.0.0",
+    "choo-log": "^1.1.0",
     "i18n-core": "^2.1.1",
     "normalize.css": "^4.2.0"
   }
