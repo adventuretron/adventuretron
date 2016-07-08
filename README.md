@@ -34,4 +34,6 @@ I like imagining a robot named `adventuretron` adventuring around the interwebs 
 There are some file system limitations to building apps that work on the web compared to building them as electron apps. But maybe those can be overcome?
 [Issue #2](https://github.com/sethvincent/adventuretron/issues/2)
 
+### What should the API/usage of adventuretron look like?
 
+I expect there will be separate adventuretron modules for the main electron process and the renderer process. See an early sketch of how the API might look: [Issue #3](https://github.com/sethvincent/adventuretron/issues/3)
