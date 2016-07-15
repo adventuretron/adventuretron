@@ -26,12 +26,15 @@
   },
   "homepage": "https://github.com/sethvincent/adventuretron#readme",
   "devDependencies": {
+    "electron-packager": "^7.3.0",
     "standard": "^7.1.2"
   },
   "dependencies": {
-    "choo": "^3.0.1",
+    "choo": "^3.1.1",
     "choo-log": "^1.1.0",
+    "electron-prebuilt": "^1.2.7",
     "i18n-core": "^2.1.1",
-    "normalize.css": "^4.2.0"
+    "normalize.css": "^4.2.0",
+    "sheetify": "^5.0.3"
   }
 }

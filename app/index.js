@@ -1,7 +1,8 @@
-var css = require('sheetify')
 var choo = require('choo')
 
-function createApp (options) {
+module.exports = function createApp (options) {
+  options = options || {}
+
   if (options.debug) {
     const chooLog = require('choo-log')
     const logger = chooLog()
