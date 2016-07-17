@@ -8,14 +8,15 @@ module.exports = function (state, prev, send) {
     }
   `
 
-  // TODO: populate from state
-  // TODO: make each item a link that triggers a route
+  var challenges = state.challenges.list
+
   return html`
     <div class="challenges-menu">
       <h2>Challenges</h2>
       <ul class="list-reset">
-        <li>First module</li>
-        <li>Use your first module</li>
+        ${challenges.map(function (item) {
+          return html`<li><a href="/${item.title}">${item.title}</a></li>`
+        })}
       </ul>
     </div>
   `

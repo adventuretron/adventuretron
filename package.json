@@ -2,12 +2,10 @@
   "name": "adventuretron",
   "version": "1.0.0",
   "description": "Create self-guided workshops using electron",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
+  "main": "main.js",
+  "browser": "app/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron example/main.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +30,7 @@
   "dependencies": {
     "choo": "^3.1.1",
     "choo-log": "^1.1.0",
+    "dom-css": "^2.0.1",
     "electron-prebuilt": "^1.2.7",
     "i18n-core": "^2.1.1",
     "normalize.css": "^4.2.0",

@@ -12,11 +12,18 @@ module.exports = function main (state, prev, send) {
     }
   `
 
+  var challengeTitle = state.params.challenge ? state.params.challenge.replace(/^\/|\/$/g, '') : ''
+  var challenge = state.challenges.list.filter(function (item) {
+    return item.title === challengeTitle
+  })[0]
+
   return html`
     <div id="app" class="">
       <main role="main" class="${prefix} site-main flex">
         ${sidebar(state, prev, send)}
-        ${content(state, prev, send)}
+        <div class="${prefix} flex-auto p2">
+        ${challenge.content(state, prev, send)}
+        </div>
       </main>
     </div>
   `

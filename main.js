@@ -21,6 +21,7 @@ module.exports = function createElectronApp (options) {
     adventuretron.window = new BrowserWindow(options)
     adventuretron.window.loadURL(options.index)
     adventuretron.window.webContents.openDevTools()
+    adventuretron.emit('ready')
   }
 
   return adventuretron
