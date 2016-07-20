@@ -1,16 +1,10 @@
 var html = require('choo/html')
-var css = require('sheetify')
+var css = require('dom-css')
 
 module.exports = function (state, prev, send) {
-  var prefix = css`
-    :host {
-
-    }
-  `
-
   var challenges = state.challenges.list
 
-  return html`
+  var el = html`
     <div class="challenges-menu">
       <h2>Challenges</h2>
       <ul class="list-reset">
@@ -20,4 +14,10 @@ module.exports = function (state, prev, send) {
       </ul>
     </div>
   `
+
+  css(el, {
+    
+  })
+
+  return el
 }

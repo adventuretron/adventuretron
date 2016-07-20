@@ -33,6 +33,7 @@
     "dom-css": "^2.0.1",
     "electron-prebuilt": "^1.2.7",
     "i18n-core": "^2.1.1",
+    "insert-css": "^1.0.0",
     "normalize.css": "^4.2.0",
     "sheetify": "^5.0.3"
   }

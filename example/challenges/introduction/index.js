@@ -6,9 +6,7 @@ module.exports = {
   content: function (state, prev, send) {
     // return html content of the challenge
     console.log(state.params)
-    return html`
-      <h1>hihiihihi</h1>
-    `
+    return html`<h1>hihiihihi</h1>`
   },
   solution: function () {
     // testable example solution returned in string

@@ -1,5 +1,8 @@
+var fs = require('fs')
+var path = require('path')
 var assert = require('assert')
 var choo = require('choo')
+var insertcss = require('insert-css')
 
 module.exports = function createApp (options) {
   options = options || {}
@@ -16,6 +19,9 @@ module.exports = function createApp (options) {
   }
 
   const app = hooks ? choo(hooks) : choo()
+
+  insertcss(fs.readFileSync(path.join(__dirname, 'basscss.min.css')))
+  insertcss(fs.readFileSync(path.join(__dirname, 'style.css')))
 
   var welcome = require('./pages/welcome')
   var challenge = require('./pages/challenge')
