@@ -6,16 +6,20 @@ var content = require('../elements/content')
 
 module.exports = function main (state, prev, send) {
   var challengeTitle = state.params.challenge ? state.params.challenge.replace(/^\/|\/$/g, '') : ''
+
   var challenge = state.challenges.list.filter(function (item) {
-    return item.title === challengeTitle
+    return item.slug === challengeTitle
   })[0]
+
+  var content = html`<div></div>`
+  content.innerHTML = challenge.content(state, prev, send)
 
   var el = html`
     <div id="app" class="">
       <main role="main" class="site-main flex">
         ${sidebar(state, prev, send)}
         <div class="flex-auto p2">
-        ${challenge.content(state, prev, send)}
+          ${content}
         </div>
       </main>
     </div>
