@@ -37,3 +37,7 @@ There are some file system limitations to building apps that work on the web com
 ### What should the API/usage of adventuretron look like?
 
 I expect there will be separate adventuretron modules for the main electron process and the renderer process. See an early sketch of how the API might look: [Issue #3](https://github.com/sethvincent/adventuretron/issues/3)
+
+### What do you need to make localization easy?
+
+Based in part on the i18n implementation in the workshopper-adventure module, I'm making localization in adventuretron a high priority. What will make translating adventuretron apps easiest for you? [Issue #4](https://github.com/sethvincent/adventuretron/issues/4)
