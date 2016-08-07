@@ -5,7 +5,8 @@ var app = createApp({
   index: path.join(__dirname, 'index.html'),
   defaultLanguage: 'en',
   challenges: [
-    require('./challenges/introduction')
+    require('./challenges/introduction'),
+    require('./challenges/next-steps')
   ]
 })
 
