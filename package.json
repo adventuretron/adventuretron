@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "choo": "^3.1.1",
+    "choo-location-electron": "^1.0.0",
     "choo-log": "^1.1.0",
     "dom-css": "^2.0.1",
     "electron-prebuilt": "^1.2.7",
