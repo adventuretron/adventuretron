@@ -22,9 +22,9 @@ module.exports = function createApp (options) {
   insertcss(fs.readFileSync(path.join(__dirname, 'style.css')))
 
   app.model(require('./models/app')(options))
-  app.model(require('./models/location')(options))
+  app.model(require('choo-location-electron')
   app.model(require('./models/challenges')(options))
-  
+
   var welcome = require('./pages/welcome')
   var challenge = require('./pages/challenge')
 
