@@ -10,13 +10,13 @@ module.exports = function (options) {
     },
     reducers: {
       language: function (data, state) {
-        return { language: data }
+        return { current: data }
       }
     },
     effects: {
       setLanguage: function (data, state, send, done) {
-        document.title = require(state.i18n + '/' + data + '.json').title
-        send('app:language', data, done)
+        document.title = state.text[data].title
+        send('i18n:language', data, done)
       }
     },
     subscriptions: []

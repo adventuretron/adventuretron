@@ -4,8 +4,11 @@
   "description": "Create self-guided workshops using electron",
   "main": "main.js",
   "browser": "renderer/index.js",
+  "style": "renderer/css/bundle.css",
   "scripts": {
-    "start": "electron example/main.js"
+    "build": "browserify renderer/index.js -t sheetify/transform -p [ css-extract -o renderer/css/bundle.css ] -o /dev/null",
+    "watch": "watchify renderer/index.js -t sheetify/transform -p [ css-extract -o renderer/css/bundle.css ] -o /dev/null",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,19 +27,22 @@
   },
   "homepage": "https://github.com/sethvincent/adventuretron#readme",
   "devDependencies": {
+    "browserify": "^13.1.0",
+    "css-extract": "^1.1.2",
     "electron-packager": "^7.3.0",
-    "standard": "^7.1.2"
+    "standard": "^7.1.2",
+    "watchify": "^3.7.0"
   },
   "dependencies": {
+    "bulk-require": "^1.0.0",
     "choo": "^3.1.1",
-    "choo-location-electron": "^1.0.0",
+    "choo-location-electron": "^1.0.1",
     "choo-log": "^1.1.0",
     "dom-css": "^2.0.1",
     "electron-prebuilt": "^1.2.7",
-    "i18n-core": "^2.1.1",
     "insert-css": "^1.0.0",
     "marked": "^0.3.6",
-    "normalize.css": "^4.2.0",
-    "sheetify": "^5.0.3"
+    "sheetify": "^5.1.0",
+    "tachyons": "^4.2.0"
   }
 }
