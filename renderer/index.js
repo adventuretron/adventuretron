@@ -27,7 +27,7 @@ module.exports = function createApp (options) {
 
   var app = hooks ? choo(hooks) : choo()
   app.model(require('./models/app')(options))
-  app.model(require('./models/location')(options))
+  app.model(require('choo-location-electron')
   app.model(require('./models/challenges')(options))
 
   app.router(function routes (route) {
