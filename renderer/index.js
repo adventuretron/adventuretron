@@ -2,7 +2,8 @@ var fs = require('fs')
 var path = require('path')
 var assert = require('assert')
 var choo = require('choo')
-var insertcss = require('insert-css')
+var css = require('sheetify')
+var bulk = require('bulk-require')
 
 var readChallenge = require('./lib/read-challenge')
 
@@ -13,22 +14,18 @@ var page = require('./pages/page')
 module.exports = function createApp (options) {
   options = options || {}
 
-  insertcss(fs.readFileSync(path.join(__dirname, 'basscss.min.css')))
-  insertcss(fs.readFileSync(path.join(__dirname, 'style.css')))
+  css('tachyons')
+  css('./style.css', { global: true })
 
-  if (options.debug) {
-    var logger = require('choo-log')()
-    var hooks = {
-      onAction: logger.onAction,
-      onError: logger.onError,
-      onStateChange: logger.onStateChange,
-    }
-  }
+  var app = choo()
+  if (options.debug) choo.use(require('choo-log')())
 
-  var app = hooks ? choo(hooks) : choo()
-  app.model(require('./models/app')(options))
-  app.model(require('choo-location-electron')
+  var challenges = options.challenges.map(readChallenge)
+  options.i18n = bulk(options.i18n, '*')
   app.model(require('./models/challenges')(options))
+  app.model(require('./models/app')(options))
+  app.model(require('./models/i18n')(options))
+  app.model(require('choo-location-electron'))
 
   app.router(function routes (route) {
     return [

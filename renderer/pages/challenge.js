@@ -1,5 +1,5 @@
 var html = require('choo/html')
-var css = require('dom-css')
+var css = require('sheetify')
 
 var domify = require('../lib/domify')
 
@@ -8,26 +8,27 @@ var sidebar = require('../elements/sidebar')
 var content = require('../elements/content')
 
 module.exports = function main (state, prev, send) {
-  var challengeTitle = state.params.challenge ? state.params.challenge.replace(/^\/|\/$/g, '') : ''
+  var prefix = css`
+    :host {
+      backgroundColor: #fff;
+      height: 100%;
+    }
+  `
+
+  var slug = state.params.challenge ? state.params.challenge.replace(/^\/|\/$/g, '') : ''
 
   var challenge = state.challenges.list.filter(function (item) {
-    return item.slug === challengeTitle
+    var text = item.i18n[state.i18n.current]
+    return text.slug === slug
   })[0]
 
-  var el = html`<div id="app" class="">
+  return html`<div id="app" class="${prefix}">
     <main role="main" class="app-main flex">
       ${header(state, prev, send)}
       ${sidebar(state, prev, send)}
-      <div class="flex-auto p2 mt3">
+      <div class="flex-auto pa2 mt3">
         ${domify(challenge.content(state, prev, send))}
       </div>
     </main>
   </div>`
-
-  css(el, {
-    backgroundColor: '#fff',
-    height: '100%'
-  })
-
-  return el
 }
