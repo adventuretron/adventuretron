@@ -11,9 +11,7 @@ module.exports = function (options) {
       list: options.challenges
     },
     reducers: {
-      setChallenge: function (data, state) {
-        
-      }
+
     },
     effects: {}
   }

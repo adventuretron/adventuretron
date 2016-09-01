@@ -7,7 +7,7 @@ module.exports = function (state, prev, send) {
 
   var content = html`<div></div>`
   content.innerHTML = challenge.content(state, prev, send)
-  var el = html`<div class="flex-auto p2">${content}</div>`
+  var el = html`<div class="app-content flex-auto p2 mt3">${content}</div>`
 
   css(el, {
     color: '#333',

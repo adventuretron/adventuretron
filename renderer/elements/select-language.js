@@ -2,7 +2,6 @@ var html = require('choo/html')
 var css = require('dom-css')
 
 module.exports = function (state, prev, send) {
-  // TODO: send action onchange
   var languages = state.app.languages
   var keys = Object.keys(languages)
 
@@ -13,7 +12,8 @@ module.exports = function (state, prev, send) {
     send('app:setLanguage', language)
   }
 
-  var el = html`<select class="select-language btn-outline fit" onchange=${onchange}>
+  // TODO: make sure current language shows as selected
+  var el = html`<select class="select-language btn-outline fit right" onchange=${onchange}>
     ${keys.map(function (key) {
       return html`<option id="${key}">${languages[key]}</option>`
     })}
@@ -21,7 +21,6 @@ module.exports = function (state, prev, send) {
 
   css(el, {
     border: '1px solid #ccc',
-    width: '100%',
     height: '30px'
   })
 

@@ -1,13 +1,11 @@
 var html = require('choo/html')
 var css = require('dom-css')
 
-var language = require('./select-language')
 var challenges = require('./challenges')
 
 module.exports = function (state, prev, send) {
   var el =  html`
-    <div class="p2">
-      ${language(state, prev, send)}
+    <div class="app-sidebar p2 mt3">
       ${challenges(state, prev, send)}
     </div>
   `

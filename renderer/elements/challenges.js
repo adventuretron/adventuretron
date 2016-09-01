@@ -4,7 +4,9 @@ var css = require('dom-css')
 module.exports = function (state, prev, send) {
   var language = state.app.language
   var challenges = state.challenges.list
-  var i18n = require('../i18n/' + language + '.json')
+  console.log(state)
+  // TODO: read this from app, not renderer dir
+  var i18n = state.app.i18n
 
   var el = html`<div class="challenges-menu">
     <h2>${i18n.challenges}</h2>
@@ -16,6 +18,5 @@ module.exports = function (state, prev, send) {
   </div>`
 
   css(el, {})
-
   return el
 }

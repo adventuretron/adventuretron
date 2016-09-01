@@ -5,7 +5,7 @@ var sidebar = require('../elements/sidebar')
 var content = require('../elements/content')
 
 module.exports = function main (state, prev, send) {
-  var main = html`<main role="main" class="site-main flex">
+  var main = html`<main role="main" class="app-main flex">
     ${sidebar(state, prev, send)}
     ${content(state, prev, send)}
   </main>`

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Create self-guided workshops using electron",
   "main": "main.js",
-  "browser": "app/index.js",
+  "browser": "renderer/index.js",
   "scripts": {
     "start": "electron example/main.js"
   },

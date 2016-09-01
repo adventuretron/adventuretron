@@ -1,6 +1,9 @@
 var html = require('choo/html')
 var css = require('dom-css')
 
+var domify = require('../lib/domify')
+
+var header = require('../elements/header')
 var sidebar = require('../elements/sidebar')
 var content = require('../elements/content')
 
@@ -11,19 +14,15 @@ module.exports = function main (state, prev, send) {
     return item.slug === challengeTitle
   })[0]
 
-  var content = html`<div></div>`
-  content.innerHTML = challenge.content(state, prev, send)
-
-  var el = html`
-    <div id="app" class="">
-      <main role="main" class="site-main flex">
-        ${sidebar(state, prev, send)}
-        <div class="flex-auto p2">
-          ${content}
-        </div>
-      </main>
-    </div>
-  `
+  var el = html`<div id="app" class="">
+    <main role="main" class="app-main flex">
+      ${header(state, prev, send)}
+      ${sidebar(state, prev, send)}
+      <div class="flex-auto p2 mt3">
+        ${domify(challenge.content(state, prev, send))}
+      </div>
+    </main>
+  </div>`
 
   css(el, {
     backgroundColor: '#fff',
