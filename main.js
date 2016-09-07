@@ -12,9 +12,8 @@ module.exports = function createElectronApp (options) {
   if (!options.index) options.index = 'file://' + path.join(options.dir, 'index.html')
   options.width = options.width || 800
   options.height = options.height || 400
-  // options.frame = false
   app.on('ready', ready)
-  
+
   var adventuretron = new EventEmitter()
   adventuretron.app = app
 

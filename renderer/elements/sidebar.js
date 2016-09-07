@@ -12,7 +12,7 @@ module.exports = function (state, prev, send) {
   `
 
   return html`
-    <div class="${prefix} app-sidebar pa2 mt3">
+    <div class="${prefix} app-sidebar pa2 mt5">
       ${challenges(state, prev, send)}
     </div>
   `

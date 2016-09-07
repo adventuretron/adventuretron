@@ -1,7 +1,7 @@
 var html = require('choo/html')
 var css = require('sheetify')
 
-var domify = require('../lib/domify')
+var domify = require('domify')
 
 var header = require('../elements/header')
 var sidebar = require('../elements/sidebar')
@@ -27,7 +27,7 @@ module.exports = function main (state, prev, send) {
       ${header(state, prev, send)}
       ${sidebar(state, prev, send)}
       <div class="flex-auto pa2 mt3">
-        ${domify(challenge.content(state, prev, send))}
+        ${challenge.content(state, prev, send)}
       </div>
     </main>
   </div>`
