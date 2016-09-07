@@ -4,7 +4,24 @@ Create self-guided workshops using electron.
 
 ## Work in progress
 
-Basically nothing works yet 😬. But check back! I'm not done yet!
+What you see here is a very early version of Adventuretron. Expect breaking changes.
+
+### Adventuretron is alive!
+
+See the example: https://github.com/sethvincent/adventuretron-example
+
+### What works?
+
+- basic i18n support.
+- value, code, & file input challenges
+- navigation & verification of challenges
+
+### What's next?
+
+- improved input helpers
+- simpler hello world adventuretron app
+- changes to api (is require('adventuretron/{helper}') adequate?)
+- exploring creating challenges for web & electron
 
 ## Inspiration
 
