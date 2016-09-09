@@ -5,17 +5,25 @@ var markdown = require('../../markdown')
 
 module.exports = function (challenges, dirname) {
   var dir = path.join(challenges, dirname)
-  var files = glob.sync(path.join(dir, '/**'))
+  var files = glob.sync(path.join(dir, '/*.md'))
   var challenge = require(path.join(dir, 'index.js'))
   challenge.path = dir
   challenge.dirname = dirname
   challenge.description = {}
+
   files.forEach(function (file) {
-    if (file.indexOf('description') > -1) {
-      var parsed = path.parse(file)
-      var language = parsed.name.split('_')[1]
-      challenge.description[language] = markdown.readFileSync(file)
+    var parsed = path.parse(file)
+
+    if (file.indexOf('_') > -1) {
+      var split = parsed.name.split('_')
+      var name = split[0]
+      var lang = split[1]
+      challenge[name][lang] = markdown.readFileSync(file)
+    } else {
+      // leaving off a language codes assumes english. not a fan of this really but it does make things simpler
+      challenge[parsed.name].en = markdown.readFileSync(file)
     }
   })
+
   return challenge
 }
