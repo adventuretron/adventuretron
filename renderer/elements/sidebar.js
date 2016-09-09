@@ -7,12 +7,14 @@ module.exports = function (state, prev, send) {
   var prefix = css`
     :host {
       width: 300px;
-      height: 100%;
+      background-color: #fafaf8;
+      top: 0;
+      bottom: 0;
     }
   `
 
   return html`
-    <div class="${prefix} app-sidebar pa2 mt5">
+    <div class="${prefix} app-sidebar ph4 pt3 fixed">
       ${challenges(state, prev, send)}
     </div>
   `
