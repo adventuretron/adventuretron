@@ -15,19 +15,31 @@ module.exports = function main (state, prev, send) {
     }
   `
 
-  var slug = state.params.challenge ? state.params.challenge.replace(/^\/|\/$/g, '') : ''
+  var slug
+  if (!state.params.challenge) {
+    slug = state.challenges.list[state.challenges.current].i18n[state.i18n.current].slug
+  } else {
+    slug = state.params.challenge.replace(/^\/|\/$/g, '')
+  }
 
   var challenge = state.challenges.list.filter(function (item) {
     var text = item.i18n[state.i18n.current]
     return text.slug === slug
   })[0]
 
+  var params = {
+    i18n: state.i18n,
+    challenge: challenge,
+    challenges: state.challenges,
+    language: state.i18n.current
+  }
+
   return html`<div id="app" class="${prefix}">
     <main role="main" class="app-main flex">
       ${header(state, prev, send)}
       ${sidebar(state, prev, send)}
       <div class="flex-auto pa2 mt3">
-        ${challenge.content(state, prev, send)}
+        ${challenge.content(params, send)}
       </div>
     </main>
   </div>`

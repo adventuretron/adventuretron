@@ -41,6 +41,7 @@
     "dom-css": "^2.0.1",
     "domify": "^1.4.0",
     "electron-prebuilt": "^1.2.7",
+    "glob": "^7.0.6",
     "insert-css": "^1.0.0",
     "interactive-sandbox": "^1.1.0",
     "marked": "^0.3.6",

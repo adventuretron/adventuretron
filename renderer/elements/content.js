@@ -12,7 +12,14 @@ module.exports = function (state, prev, send) {
 
   var challenge = state.challenges.list[state.challenges.current]
 
+  var params = {
+    i18n: state.i18n,
+    challenge: challenge,
+    challenges: state.challenges,
+    language: state.i18n.current
+  }
+
   return html`<div class="${prefix} app-content flex-auto pa2 mt3">
-    ${challenge.content(state, prev, send)}
+    ${challenge.content(params, send)}
   </div>`
 }

@@ -7,7 +7,7 @@ var bulk = require('bulk-require')
 
 var readChallenge = require('./lib/read-challenge')
 
-var welcome = require('./pages/welcome')
+var main = require('./pages/main')
 var challenge = require('./pages/challenge')
 var page = require('./pages/page')
 
@@ -20,7 +20,10 @@ module.exports = function createApp (options) {
   var app = choo()
   if (options.debug) choo.use(require('choo-log')())
 
-  var challenges = options.challenges.map(readChallenge)
+  options.challenges = fs.readdirSync(options.challenges).map(function (item) {
+    return readChallenge(options.challenges, item)
+  })
+
   options.i18n = bulk(options.i18n, '*')
   app.model(require('./models/challenges')(options))
   app.model(require('./models/app')(options))
@@ -29,7 +32,7 @@ module.exports = function createApp (options) {
 
   app.router(function routes (route) {
     return [
-      route('/', welcome),
+      route('/', challenge),
       route('/:challenge', challenge),
       route('/page/:page', page)
     ]

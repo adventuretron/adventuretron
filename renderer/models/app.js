@@ -5,7 +5,12 @@ module.exports = function (options) {
     namespace: 'app',
     state: {},
     reducers: {},
-    effects: {},
+    effects: {
+      redirect: function (data, state, send, done) {
+        send('location:pathname', data, done)
+        window.history.pushState({}, null, data)
+      }
+    },
     subscriptions: []
   }
 }
