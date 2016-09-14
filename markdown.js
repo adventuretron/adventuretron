@@ -1,16 +1,28 @@
 var fs = require('fs')
 var marked = require('marked')
-var domify = require('domify')
-var html = require('choo/html')
+var hl = require('highlight.js')
 
-function renderMarkdown (htmlstring) {
-  var el = html`<div></div>`
-  el.innerHTML = marked(htmlstring)
-  return el
+marked.setOptions({
+  highlight: function (code, lang) {
+    try {
+      return highlight(code, lang)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+})
+
+function highlight (code, lang) {
+  var out = lang ? hl.highlight(lang, code) : hl.highlightAuto(code)
+  return out.value
+}
+
+function renderMarkdown (str) {
+  return str ? marked(str) : ''
 }
 
 function readFileSync (filepath) {
-  return marked(fs.readFileSync(filepath, 'utf8'))
+  return renderMarkdown(fs.readFileSync(filepath, 'utf8'))
 }
 
 module.exports = renderMarkdown

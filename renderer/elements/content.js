@@ -19,7 +19,7 @@ module.exports = function (state, prev, send) {
     language: state.i18n.current
   }
 
-  return html`<div class="${prefix} app-content flex-auto pa2 mt3">
+  return html`<div class="${prefix} app-content flex-auto pa2 pt3 mt3">
     ${challenge.content(params, send)}
   </div>`
 }

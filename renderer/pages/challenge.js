@@ -2,7 +2,6 @@ var html = require('choo/html')
 var css = require('sheetify')
 
 var sidebar = require('../elements/sidebar')
-var content = require('../elements/content')
 
 module.exports = function main (state, prev, send) {
   var prefix = css`
@@ -37,7 +36,7 @@ module.exports = function main (state, prev, send) {
     <main role="main" class="app-main flex">
       ${sidebar(state, prev, send)}
       <div class="app-content ph4 mb5">
-        <div class="app-content-wrapper">
+        <div class="app-content-wrapper pt2">
           ${challenge.content(params, send)}
         </div>
       </div>

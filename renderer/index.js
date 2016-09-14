@@ -15,6 +15,7 @@ module.exports = function createApp (options) {
   options = options || {}
 
   css('tachyons')
+  css('highlight.js/styles/tomorrow.css')
   css('./style.css', { global: true })
 
   var app = choo()
