@@ -8,6 +8,7 @@ module.exports = function (state, prev, send) {
     :host {
       width: 300px;
       background-color: #fafaf8;
+      border-right: 1px solid #eee;
       top: 0;
       bottom: 0;
     }

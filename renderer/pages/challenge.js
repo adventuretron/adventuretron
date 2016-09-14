@@ -23,17 +23,8 @@ module.exports = function main (state, prev, send) {
     }
   `
 
-  var slug
-  if (!state.params.challenge) {
-    slug = state.challenges.list[state.challenges.current].i18n[state.i18n.current].slug
-  } else {
-    slug = state.params.challenge.replace(/^\/|\/$/g, '')
-  }
-
-  var challenge = state.challenges.list.filter(function (item) {
-    var text = item.i18n[state.i18n.current]
-    return text.slug === slug
-  })[0]
+  var slug = state.challenges.current
+  var challenge = state.challenges.items[slug]
 
   var params = {
     i18n: state.i18n,

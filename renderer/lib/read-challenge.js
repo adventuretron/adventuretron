@@ -3,12 +3,12 @@ var path = require('path')
 var glob = require('glob')
 var markdown = require('../../markdown')
 
-module.exports = function (challenges, dirname) {
-  var dir = path.join(challenges, dirname)
+module.exports = function (challengesDir, dirname) {
+  var dir = path.join(challengesDir, dirname)
   var files = glob.sync(path.join(dir, '/*.md'))
   var challenge = require(path.join(dir, 'index.js'))
   challenge.path = dir
-  challenge.dirname = dirname
+  challenge.slug = dirname
   challenge.description = {}
 
   files.forEach(function (file) {
@@ -20,7 +20,8 @@ module.exports = function (challenges, dirname) {
       var lang = split[1]
       challenge[name][lang] = markdown.readFileSync(file)
     } else {
-      // leaving off a language codes assumes english. not a fan of this really but it does make things simpler
+      // leaving off a language code assumes english
+      // not a fan of this really but it does make hello world example simpler
       challenge[parsed.name].en = markdown.readFileSync(file)
     }
   })

@@ -18,22 +18,25 @@ module.exports = function createApp (options) {
   css('./style.css', { global: true })
 
   var app = choo()
-  if (options.debug) choo.use(require('choo-log')())
+  options.debug = true
+  if (options.debug) app.use(require('choo-log')())
 
-  options.challenges = fs.readdirSync(options.challenges).map(function (item) {
-    return readChallenge(options.challenges, item)
+  var challenges = {}
+  fs.readdirSync(options.challenges).map(function (challengeDir) {
+    var challenge = readChallenge(options.challenges, challengeDir)
+    challenges[challenge.slug] = challenge
   })
 
+  options.challenges = challenges
   options.i18n = bulk(options.i18n, '*')
+  app.model(require('./models/location'))
   app.model(require('./models/challenges')(options))
   app.model(require('./models/app')(options))
   app.model(require('./models/i18n')(options))
-  app.model(require('choo-location-electron'))
 
   app.router(function routes (route) {
     return [
       route('/', challenge),
-      route('/:challenge', challenge),
       route('/page/:page', page)
     ]
   })
@@ -46,7 +49,7 @@ module.exports = function createApp (options) {
       }
       opts = opts || {}
       opts.href = opts.href || false
-      var tree = app.start(id, opts)
+      var tree = app.start({ href: false })
       document.body.appendChild(tree)
     }
   }

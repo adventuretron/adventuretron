@@ -10,7 +10,7 @@ module.exports = function (state, prev, send) {
     }
   `
 
-  var challenge = state.challenges.list[state.challenges.current]
+  var challenge = state.challenges.items[state.challenges.current]
 
   var params = {
     i18n: state.i18n,

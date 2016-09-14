@@ -7,3 +7,46 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
+.button,
+.button:link,
+.button:visited,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  background-color: #5D92C4;
+  border: 1px solid #5D92C4;
+  color: #fff;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+  white-space: nowrap;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  font-size: 1.2em;
+  letter-spacing: 0;
+}
+
+.button:hover,
+.button:focus,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  background-color: #406487;
+  border: 1px solid #406487;
+  color: #fff;
+}
