@@ -8,7 +8,7 @@ What you see here is a very early version of Adventuretron. Expect breaking chan
 
 ### Adventuretron is alive!
 
-See the example: https://github.com/sethvincent/adventuretron-example
+To see an example of an Adventuretron workshop, check out this work in progress workshop that teaches creating Adventuretron workshops: [adventuretron-adventure](https://github.com/sethvincent/adventuretron-adventure).
 
 ### What works?
 
@@ -58,3 +58,7 @@ I expect there will be separate adventuretron modules for the main electron proc
 ### What do you need to make localization easy?
 
 Based in part on the i18n implementation in the workshopper-adventure module, I'm making localization in adventuretron a high priority. What will make translating adventuretron apps easiest for you? [Issue #4](https://github.com/sethvincent/adventuretron/issues/4)
+
+## Dependencies
+
+The main dependencies of Adventuretron are [electron](http://electron.atom.io/) & [choo](https://github.com/yoshuawuyts/choo).
