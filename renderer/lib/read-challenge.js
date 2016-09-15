@@ -19,7 +19,6 @@ module.exports = function (challengesDir, dirname) {
       var name = split[0]
       var lang = split[1]
       challenge[name][lang] = markdown.readFileSync(file)
-      console.log(challenge[name][lang])
     } else {
       // leaving off a language code assumes english
       // not a fan of this really but it does make hello world example simpler

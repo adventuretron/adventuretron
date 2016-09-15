@@ -16,6 +16,7 @@ module.exports = function (options) {
       challengeComplete: function (data, state) {
         state.items[state.current].success = true
         state.items[state.current].answer = data
+        state.items[state.current].error = null
         state.complete.push(state.current)
         return state
       },
