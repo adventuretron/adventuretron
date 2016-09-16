@@ -25,5 +25,6 @@ function readFileSync (filepath) {
   return renderMarkdown(fs.readFileSync(filepath, 'utf8'))
 }
 
-module.exports = renderMarkdown
+module.exports = require('beldown')
+module.exports.fromString = renderMarkdown
 module.exports.readFileSync = readFileSync

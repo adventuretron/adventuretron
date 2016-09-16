@@ -40,18 +40,16 @@ module.exports = function (options) {
       },
       next: function (data, state, send, done) {
         var keys = Object.keys(state.items)
-        send('challenges:challengeComplete', function () {
-          if (keys.length === state.complete.length) {
-            send('challenges:done', done)
-          } else {
-            var index = keys.indexOf(state.current)
-            var slug = keys[index + 1]
-            send('challenges:setChallenge', slug, function () {
-              document.body.scrollTop = 0
-              done()
-            })
-          }
-        })
+        if (keys.length === state.complete.length) {
+          send('challenges:done', done)
+        } else {
+          var index = keys.indexOf(state.current)
+          var slug = keys[index + 1]
+          send('challenges:setChallenge', slug, function () {
+            document.body.scrollTop = 0
+            done()
+          })
+        }
       }
     }
   }
