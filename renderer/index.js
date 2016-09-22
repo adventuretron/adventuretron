@@ -13,11 +13,6 @@ var page = require('./pages/page')
 
 module.exports = function createApp (options) {
   options = options || {}
-
-  css('tachyons')
-  css('highlight.js/styles/tomorrow.css')
-  css('./style.css', { global: true })
-
   var app = choo()
   options.debug = true
   if (options.debug) app.use(require('choo-log')())
@@ -41,6 +36,10 @@ module.exports = function createApp (options) {
       route('/page/:page', page)
     ]
   })
+
+  css('tachyons')
+  css('highlight.js/styles/tomorrow.css')
+  css('./style.css', { global: true })
 
   return {
     start: function (id, opts) {

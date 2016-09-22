@@ -50,3 +50,12 @@ input[type="button"]:focus {
   border: 1px solid #406487;
   color: #fff;
 }
+
+pre {
+  padding: 20px;
+  background-color: #fefefa;
+  font-size: 0.9em;
+  line-height: 1.4em;
+  border: 1px solid #efefea;
+  overflow-x: scroll;
+}

@@ -135,6 +135,15 @@ input[type="button"]:focus {
   background-color: #406487;
   border: 1px solid #406487;
   color: #fff;
+}
+
+pre {
+  padding: 20px;
+  background-color: #fefefa;
+  font-size: 0.9em;
+  line-height: 1.4em;
+  border: 1px solid #efefea;
+  overflow-x: scroll;
 }._77d9efc5 {
       backgroundColor: #fff;
       height: 100%;

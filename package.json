@@ -35,7 +35,7 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "beldown": "^1.0.0",
+    "beldown": "^1.1.0",
     "bulk-require": "^1.0.0",
     "choo": "^3.1.1",
     "choo-location-electron": "^1.0.1",
