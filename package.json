@@ -6,6 +6,7 @@
   "browser": "renderer/index.js",
   "style": "renderer/css/bundle.css",
   "scripts": {
+    "test": "tape tests/*.js",
     "build": "browserify renderer/index.js -t sheetify/transform -p [ css-extract -o renderer/css/bundle.css ] -o /dev/null",
     "watch": "watchify renderer/index.js -t sheetify/transform -p [ css-extract -o renderer/css/bundle.css ] -o /dev/null",
     "prepublish": "npm run build"

@@ -1,6 +1,6 @@
 var path = require('path')
 var test = require('tape')
-var checkFiles = require('../lib/check-files')
+var filesExist = require('../lib/files-exist')
 
 test('make sure files exist', function (t) {
   var dir = path.join(__dirname, 'fixtures', 'check-files')
@@ -12,7 +12,7 @@ test('make sure files exist', function (t) {
     path.join(dir, 'c', 'd.js')
   ]
 
-  checkFiles(files, function (err, ok) {
+  filesExist(files, function (err, ok) {
     t.notOk(err)
     t.ok(ok)
     t.end()

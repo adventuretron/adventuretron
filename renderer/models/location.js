@@ -1,3 +1,5 @@
+var shell = require('electron').shell
+
 module.exports = {
   namespace: 'location',
   state: {
@@ -20,16 +22,19 @@ module.exports = {
   subscriptions: [
     function catchLinks (send, done) {
       window.onclick = function (e) {
+        e.preventDefault()
         var node = (function traverse (node) {
           if (!node) return
           if (node.localName !== 'a') return traverse(node.parentNode)
           if (node.href === undefined) return traverse(node.parentNode)
-          if (window.location.host !== node.host) return traverse(node.parentNode)
           return node
         })(e.target)
 
-        if (!node) return
+        if (!node || !node.href) return
         e.preventDefault()
+        if (node.href.indexOf('http') > -1) {
+          return shell.openExternal(node.href)
+        }
         var href = node.href.replace('file://', '')
         send('location:redirect', href.replace(/#$/, ''), done)
       }
