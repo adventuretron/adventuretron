@@ -19,8 +19,10 @@ module.exports = function createApp (options) {
 
   var challenges = {}
   fs.readdirSync(options.challenges).map(function (challengeDir) {
-    var challenge = readChallenge(options.challenges, challengeDir)
-    challenges[challenge.slug] = challenge
+    if (challengeDir !== '.DS_Store') {
+      var challenge = readChallenge(options.challenges, challengeDir)
+      challenges[challenge.slug] = challenge
+    }
   })
 
   options.challenges = challenges

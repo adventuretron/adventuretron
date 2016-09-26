@@ -11,9 +11,12 @@
     "watch": "watchify renderer/index.js -t sheetify/transform -p [ css-extract -o renderer/css/bundle.css ] -o /dev/null",
     "prepublish": "npm run build"
   },
+  "bin": {
+    "adventuretron": "bin/index.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sethvincent/adventuretron.git"
+    "url": "git+https://github.com/adventuretron/adventuretron.git"
   },
   "keywords": [
     "nodeschool",
@@ -24,9 +27,9 @@
   "author": "sethvincent",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sethvincent/adventuretron/issues"
+    "url": "https://github.com/adventuretron/adventuretron/issues"
   },
-  "homepage": "https://github.com/sethvincent/adventuretron#readme",
+  "homepage": "https://github.com/adventuretron/adventuretron#readme",
   "devDependencies": {
     "browserify": "^13.1.0",
     "css-extract": "^1.1.2",
@@ -41,17 +44,22 @@
     "choo": "^3.1.1",
     "choo-location-electron": "^1.0.1",
     "choo-log": "^1.1.0",
+    "create-html": "^1.1.0",
     "dom-css": "^2.0.1",
     "domify": "^1.4.0",
     "each-async": "^1.1.1",
     "electron": "^1.3.5",
+    "execspawn": "^1.0.1",
     "glob": "^7.0.6",
     "highlight.js": "^9.6.0",
     "insert-css": "^1.0.0",
     "interactive-sandbox": "^1.1.0",
     "marked": "^0.3.6",
+    "maxstache-stream": "^1.0.4",
     "sheetify": "^5.1.0",
+    "subcommand": "^2.0.3",
     "tachyons": "^4.2.0",
+    "tar-fs": "^1.13.2",
     "xtend": "^4.0.1"
   }
 }

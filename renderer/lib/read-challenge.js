@@ -9,10 +9,10 @@ module.exports = function (challengesDir, dirname) {
   var challenge = require(path.join(dir, 'index.js'))
   challenge.path = dir
   challenge.slug = dirname
-  challenge.description = {}
 
   files.forEach(function (file) {
     var parsed = path.parse(file)
+    challenge[parsed.name] = {}
 
     if (file.indexOf('_') > -1) {
       var split = parsed.name.split('_')
@@ -22,7 +22,7 @@ module.exports = function (challengesDir, dirname) {
     } else {
       // leaving off a language code assumes english
       // not a fan of this really but it does make hello world example simpler
-      challenge[parsed.name].en = markdown.readFileSync(file)
+      challenge[parsed.name]['en'] = markdown.readFileSync(file)
     }
   })
 
