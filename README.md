@@ -8,20 +8,23 @@ What you see here is a very early version of Adventuretron. Expect breaking chan
 
 ### Adventuretron is alive!
 
-To see an example of an Adventuretron workshop, check out this work in progress workshop that teaches creating Adventuretron workshops: [adventuretron-adventure](https://github.com/sethvincent/adventuretron-adventure).
+To see an example of an Adventuretron workshop, check out this work in progress workshop that teaches creating Adventuretron workshops: [adventuretron-adventure](https://github.com/adventuretron/adventuretron-adventure).
 
-### What works?
+### Features
 
 - basic i18n support.
 - value, code, & file input challenges
 - navigation & verification of challenges
 
-### What's next?
+## Get involved
 
-- improved input helpers
-- simpler hello world adventuretron app
-- changes to api (is require('adventuretron/{helper}') adequate?)
-- exploring creating challenges for web & electron
+- [adventuretron.org](https://adventuretron.org)
+- [documentation](https://docs.adventuretron.org)
+- [github org](https://github.com/adventuretron)
+- [chat](https://gitter.im/adventuretron/discuss)
+
+## Code of conduct
+All participants in the production of Adventuretron projects are expected to follow the [code of conduct](CONDUCT.md).
 
 ## Inspiration
 
