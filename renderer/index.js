@@ -2,10 +2,13 @@ var fs = require('fs')
 var path = require('path')
 var assert = require('assert')
 var choo = require('choo')
-var css = require('sheetify')
+var persist = require('choo-persist')
 var bulk = require('bulk-require')
+var css = require('sheetify')
+var xtend = require('xtend')
 
 var readChallenge = require('./lib/read-challenge')
+var createDB = require('./lib/db')
 
 var main = require('./pages/main')
 var challenge = require('./pages/challenge')
@@ -13,6 +16,8 @@ var page = require('./pages/page')
 
 module.exports = function createApp (options) {
   options = options || {}
+  options.slug = options.name.replace(/[^a-z0-9]/gi, '-').toLowerCase()
+
   var app = choo()
   options.debug = true
   if (options.debug) app.use(require('choo-log')())
@@ -23,6 +28,10 @@ module.exports = function createApp (options) {
       var challenge = readChallenge(options.challenges, challengeDir)
       challenges[challenge.slug] = challenge
     }
+  })
+
+  var db = createDB({
+    name: options.slug
   })
 
   options.challenges = challenges
@@ -49,10 +58,28 @@ module.exports = function createApp (options) {
         opts = id
         id = null
       }
-      opts = opts || {}
-      opts.href = opts.href || false
-      var tree = app.start({ href: false })
-      document.body.appendChild(tree)
+
+      db.get('state', function (err, val) {
+        app.use({
+          wrapInitialState: function (state) {
+            Object.keys(challenges).forEach(function (key) {
+              val.challenges.items[key].content = challenges[key].content
+            })
+            return xtend(state, val)
+          },
+          onStateChange: function (data, state, prev, caller, createSend) {
+            db.put('state', state, function (err) {
+              console.log('onStateChange db.put err', err)
+            })
+          }
+        })
+
+        opts = opts || {}
+        opts.href = opts.href || false
+        const tree = app.start(opts)
+        document.body.appendChild(tree)
+      })
+      
     }
   }
 }

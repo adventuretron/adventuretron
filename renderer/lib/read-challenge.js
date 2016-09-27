@@ -18,10 +18,12 @@ module.exports = function (challengesDir, dirname) {
       var split = parsed.name.split('_')
       var name = split[0]
       var lang = split[1]
+      challenge[name] = challenge[name] || {}
       challenge[name][lang] = markdown.readFileSync(file)
     } else {
       // leaving off a language code assumes english
       // not a fan of this really but it does make hello world example simpler
+      challenge[parsed.name] = challenge[parsed.name] || {}
       challenge[parsed.name]['en'] = markdown.readFileSync(file)
     }
   })

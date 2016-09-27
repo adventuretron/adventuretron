@@ -28,8 +28,14 @@ module.exports = function (state, prev, send) {
       ${keys.map(function (key) {
         var item = challenges[key]
         var text = item.i18n[lang]
+
+        var link = html`<a class="link pv0 hover-black focus-black gray" href="#" data-slug="${item.slug}" onclick=${onclick}>
+          ${item.success ? html`☑` : html`☐`}
+          ${text.title}
+        </a>`
+
         return html`<li class="mb2">
-          <a class="link pv0 hover-black focus-black gray" href="#" data-slug="${item.slug}" onclick=${onclick}>${text.title}</a>
+          ${link}
         </li>`
       })}
     </ul>
