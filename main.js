@@ -10,6 +10,8 @@ module.exports = function createElectronApp (options) {
   options = options || {}
   if (!options.dir) options.dir = app.getAppPath()
   if (!options.index) options.index = 'file://' + path.join(options.dir, 'index.html')
+  global.userData = app.getPath('userData')
+
   app.on('ready', ready)
 
   var adventuretron = new EventEmitter()
