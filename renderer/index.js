@@ -9,6 +9,7 @@ var xtend = require('xtend')
 
 var readChallenge = require('./lib/read-challenge')
 var createDB = require('./lib/db')
+var slugify = require('./lib/slugify')
 
 var main = require('./pages/main')
 var challenge = require('./pages/challenge')
@@ -16,7 +17,7 @@ var page = require('./pages/page')
 
 module.exports = function createApp (options) {
   options = options || {}
-  options.slug = options.name.replace(/[^a-z0-9]/gi, '-').toLowerCase()
+  options.slug = slugify(options.name)
 
   var app = choo()
   options.debug = true
@@ -59,13 +60,19 @@ module.exports = function createApp (options) {
         id = null
       }
 
-      db.get('state', function (err, val) {
+      db.get('state', function (err, prevState) {
+        if (err) {} // state obj just hasn't been created yet
+
         app.use({
           wrapInitialState: function (state) {
-            Object.keys(challenges).forEach(function (key) {
-              val.challenges.items[key].content = challenges[key].content
-            })
-            return xtend(state, val)
+            if (prevState) {
+              Object.keys(challenges).forEach(function (key) {
+                prevState.challenges.items[key].content = challenges[key].content
+              })
+              return xtend(state, prevState)
+            } else {
+              return state
+            }
           },
           onStateChange: function (data, state, prev, caller, createSend) {
             db.put('state', state, function (err) {
@@ -83,3 +90,5 @@ module.exports = function createApp (options) {
     }
   }
 }
+
+
