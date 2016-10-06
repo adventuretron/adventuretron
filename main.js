@@ -12,12 +12,10 @@ module.exports = function createElectronApp (options) {
   if (!options.index) options.index = 'file://' + path.join(options.dir, 'index.html')
   global.userData = app.getPath('userData')
 
-  app.on('ready', ready)
-
   var adventuretron = new EventEmitter()
   adventuretron.app = app
 
-  function ready () {
+  app.on('ready', function ready () {
     var size = electron.screen.getPrimaryDisplay().workAreaSize
     options.width = options.width || size.width
     options.height = options.height || size.height
@@ -25,7 +23,7 @@ module.exports = function createElectronApp (options) {
     adventuretron.window.loadURL(options.index)
     adventuretron.window.webContents.openDevTools()
     adventuretron.emit('ready')
-  }
+  })
 
   return adventuretron
 }
