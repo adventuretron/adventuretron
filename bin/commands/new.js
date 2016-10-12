@@ -34,7 +34,7 @@ module.exports = {
         var opts = { stdio: [ 0,1,2 ] }
         exec('npm init', opts)
         exec('npm i --save adventuretron', opts)
-        exec('npm i --save-dev browserify insert-css watchify sheetify', opts)
+        exec('npm i --save-dev browserify insert-css watchify sheetify css-extract', opts)
         copy('challenges', templatesDir, outputDir)
         copy('i18n', templatesDir, outputDir)
 
