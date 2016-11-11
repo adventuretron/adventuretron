@@ -48,7 +48,7 @@ module.exports = {
         pkg.scripts = {
           build: 'browserify renderer.js -t sheetify/transform -p [ css-extract -o bundle.css ] -o /dev/null',
           watch: 'watchify renderer.js -t sheetify/transform -p [ css-extract -o bundle.css ] -o /dev/null',
-          start: 'npm run build && npm run watch & electron .'
+          start: 'npm run build && electron .'
         }
 
         fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2), function (err) {
