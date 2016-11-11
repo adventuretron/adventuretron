@@ -1,6 +1,6 @@
 {
   "name": "adventuretron",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Create self-guided workshops using electron",
   "main": "main.js",
   "browser": "renderer/index.js",
