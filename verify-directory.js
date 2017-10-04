@@ -32,9 +32,11 @@ module.exports = function verifyDirectory (options) {
   function onchange (e) {
     e.preventDefault()
     var dir = e.target.files[0].path
+
     files = files.map(function (file) {
       return path.join(dir, file)
     })
+
     filesExist(files, options.verify)
   }
 

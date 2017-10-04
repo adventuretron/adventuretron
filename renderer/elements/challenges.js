@@ -1,27 +1,17 @@
 var html = require('choo/html')
-var css = require('sheetify')
 
 module.exports = function (state, prev, send) {
   var challenges = state.challenges.items
   var lang = state.i18n.current
   var uiText = state.i18n.text[lang]
-
-  var prefix = css`
-    :host {}
-    
-    button {
-      border: 0px;
-      background-color: none;
-      padding: 0;
-    }
-  `
+  var keys = Object.keys(challenges)
 
   function onclick (e) {
     e.preventDefault()
     e.stopPropagation()
     send('challenges:setChallenge', e.target.dataset.slug)
   }
-  var keys = Object.keys(challenges)
+
   return html`<div class="challenges-menu">
     <h2 class="f4 ttu tracked fw4">${uiText.challenges}</h2>
     <ul class="list pl0">

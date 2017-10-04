@@ -1,3 +1,6 @@
+@import "tachyons";
+@import "highlight.js/styles/tomorrow.css";
+
 html, body {
   height: 100%;
   margin: 0px;
@@ -58,4 +61,12 @@ pre {
   line-height: 1.4em;
   border: 1px solid #efefea;
   overflow-x: scroll;
+}
+
+p code {
+  font-family: Consolas,monaco,monospace;
+  font-size: 12px;
+  padding: 3px 5px;
+  background-color: #efefea;
+  border-radius: 3px;
 }

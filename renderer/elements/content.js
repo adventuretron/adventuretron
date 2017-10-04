@@ -1,15 +1,6 @@
-var html = require('choo/html')
-var css = require('sheetify')
-var domify = require('domify')
+var html = require('bel')
 
 module.exports = function (state, prev, send) {
-  var prefix = css`
-    :host {
-      color: #333;
-      height: 100%;
-    }
-  `
-
   var challenge = state.challenges.items[state.challenges.current]
 
   var params = {
@@ -19,7 +10,7 @@ module.exports = function (state, prev, send) {
     language: state.i18n.current
   }
 
-  return html`<div class="${prefix} app-content flex-auto pa2 pt3 mt3">
+  return html`<div class="app-content flex-auto pa2 pt3 mt3 h-100 dark-gray">
     ${challenge.content(params, send)}
   </div>`
 }

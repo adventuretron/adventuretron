@@ -3,7 +3,6 @@ var path = require('path')
 var assert = require('assert')
 var choo = require('choo')
 var bulk = require('bulk-require')
-var css = require('sheetify')
 var xtend = require('xtend')
 
 var readChallenge = require('./lib/read-challenge')
@@ -48,10 +47,6 @@ module.exports = function createApp (options) {
     ]
   })
 
-  css('tachyons')
-  css('highlight.js/styles/tomorrow.css')
-  css('./style.css', { global: true })
-
   return {
     start: function (id, opts) {
       if (typeof id === 'object') {
@@ -65,7 +60,9 @@ module.exports = function createApp (options) {
         wrapInitialState: function (state) {
           if (prevState) {
             Object.keys(challenges).forEach(function (key) {
-              prevState.challenges.items[key].content = challenges[key].content
+              if (prevState.challenges.items[key]) {
+                prevState.challenges.items[key].content = challenges[key].content
+              }
             })
             return xtend(state, prevState)
           } else {
@@ -81,8 +78,6 @@ module.exports = function createApp (options) {
       opts.href = opts.href || false
       const tree = app.start(opts)
       document.body.appendChild(tree)
-    })
+    }
   }
 }
-
-

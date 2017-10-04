@@ -10,7 +10,7 @@ module.exports = function verifyText (options) {
   var headerText = options.headerText
   var buttonText = options.buttonText || 'Check your answer'
   var descriptionText = options.descriptionText
-  var placeholder = options.placeholder
+  var placeholder = options.placeholder || "type here"
   var value
 
   function oninput (e) {
@@ -25,9 +25,9 @@ module.exports = function verifyText (options) {
   return html`<div class="challenge-value-input">
     ${headerText ? html`<h2>${headerText}</h2>` : ''}
     ${descriptionText ? html`<p>${descriptionText}</p>` : ''}
-    <form onsubmit=${onsubmit}>
+    <form>
       <input type="text" placeholder="${placeholder}" oninput=${oninput} />
-      <input type="submit" value="${buttonText}" />
+      <input type="submit" value="${buttonText}" onclick=${onsubmit} />
     </form>
   </div>`
 }

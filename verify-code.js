@@ -31,6 +31,7 @@ module.exports = function verifyCode (options) {
     ${headerText ? html`<h2>${headerText}</h2>` : ''}
     ${descriptionText ? html`<p>${descriptionText}</p>` : ''}
     ${sandbox.render()}
+
     <button onclick=${onclick}>${buttonText}</button>
   </div>`
 }

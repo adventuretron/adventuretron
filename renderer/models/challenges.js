@@ -29,6 +29,14 @@ module.exports = function (options) {
       },
       done: function (data, state) {
         return { done: true }
+      },
+      reset: function (data, state) {
+        return {
+          complete: [],
+          done: false,
+          current: Object.keys(options.challenges)[0],
+          items: options.challenges
+        }
       }
     },
     effects: {

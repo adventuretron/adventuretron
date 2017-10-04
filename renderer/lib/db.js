@@ -18,7 +18,7 @@ module.exports = function (name, opts) {
   }
 
   return {
-    get: get
+    get: get,
     put: put
   }
 }

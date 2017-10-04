@@ -1,8 +1,5 @@
 var path = require('path')
 var createApp = require('adventuretron/renderer')
-var css = require('sheetify')
-
-css('adventuretron')
 
 var app = createApp({
   name: '{{title}}',

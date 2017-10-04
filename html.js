@@ -1,1 +1,1 @@
-module.exports = require('choo/html')
+module.exports = require('bel')

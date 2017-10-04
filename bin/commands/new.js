@@ -12,7 +12,7 @@ module.exports = {
   name: 'new',
   command: function (args) {
     var cwd = path.parse(process.cwd())
-    var files = ['main.js', 'renderer.js']
+    var files = ['main.js', 'renderer.js', 'style.css']
     var templatesDir = path.join(__dirname, '..', 'templates')
     var outputDir = process.cwd()
 
@@ -36,9 +36,12 @@ module.exports = {
         var opts = { stdio: [ 0,1,2 ] }
 
         exec('npm init', opts)
+        console.log('installing dependencies ...')
         exec('npm i --save adventuretron', opts)
-        exec('npm i --save-dev browserify insert-css watchify sheetify css-extract', opts)
+        exec('npm i --save-dev csskit', opts)
+        exec('npm i --save electron', opts)
         exec('npm rebuild --runtime=electron --target=' + electronVersion + ' --disturl=https://atom.io/download/atom-shell --build-from-source', opts)
+        console.log('copying files ...')
         copy('challenges', templatesDir, outputDir)
         copy('i18n', templatesDir, outputDir)
 
@@ -46,14 +49,15 @@ module.exports = {
         var pkg = require(pkgPath)
 
         pkg.scripts = {
-          build: 'browserify renderer.js -t sheetify/transform -p [ css-extract -o bundle.css ] -o /dev/null',
-          watch: 'watchify renderer.js -t sheetify/transform -p [ css-extract -o bundle.css ] -o /dev/null',
+          build: 'csskit bundle style.css -o bundle.css',
+          watch: 'csskit watch style.css -o bundle.css',
           start: 'npm run build && electron .'
         }
 
         fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2), function (err) {
           if (err) console.log(err)
           exec('npm run build', opts)
+          console.log('run `npm start` to see your new Adventuretron project in action')
         })
       })
     })
