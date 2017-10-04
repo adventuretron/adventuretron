@@ -59,34 +59,29 @@ module.exports = function createApp (options) {
         id = null
       }
 
-      db.get('state', function (err, prevState) {
-        if (err) {} // state obj just hasn't been created yet
+      var prevState = db.get('state')
 
-        app.use({
-          wrapInitialState: function (state) {
-            if (prevState) {
-              Object.keys(challenges).forEach(function (key) {
-                prevState.challenges.items[key].content = challenges[key].content
-              })
-              return xtend(state, prevState)
-            } else {
-              return state
-            }
-          },
-          onStateChange: function (data, state, prev, caller, createSend) {
-            db.put('state', state, function (err) {
-              console.log('onStateChange db.put err', err)
+      app.use({
+        wrapInitialState: function (state) {
+          if (prevState) {
+            Object.keys(challenges).forEach(function (key) {
+              prevState.challenges.items[key].content = challenges[key].content
             })
+            return xtend(state, prevState)
+          } else {
+            return state
           }
-        })
-
-        opts = opts || {}
-        opts.href = opts.href || false
-        const tree = app.start(opts)
-        document.body.appendChild(tree)
+        },
+        onStateChange: function (data, state, prev, caller, createSend) {
+          db.put('state', state)
+        }
       })
-      
-    }
+
+      opts = opts || {}
+      opts.href = opts.href || false
+      const tree = app.start(opts)
+      document.body.appendChild(tree)
+    })
   }
 }
 
