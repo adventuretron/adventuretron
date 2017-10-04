@@ -70,3 +70,23 @@ p code {
   background-color: #efefea;
   border-radius: 3px;
 }
+
+#app {
+  backgroundColor: #fff;
+  height: 100%;
+}
+
+main {
+  height: 100%;
+}
+
+.app-content {
+  margin-left:300px;
+  width: calc(100% - 300px);
+}
+
+.app-content-wrapper {
+  margin: 0px auto;
+  width: 100%;
+  max-width: 700px;
+}

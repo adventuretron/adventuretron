@@ -3,7 +3,6 @@ var path = require('path')
 var assert = require('assert')
 var xtend = require('xtend')
 var html = require('choo/html')
-var css = require('sheetify')
 var filesExist = require('./lib/files-exist')
 
 module.exports = function verifyDirectory (options) {
@@ -15,15 +14,8 @@ module.exports = function verifyDirectory (options) {
   var buttonText = options.buttonText
   var descriptionText = options.descriptionText
 
-  var prefix = css`
-    :host {}
-
-    .dir-finder {
-      visibility: hidden;
-    }
-  `
-
   var dirFinder = html`<input class="dir-finder" type="file" webkitdirectory onchange=${onchange} />`
+  dirFinder.style.visibility = 'hidden'
 
   function onclick (e) {
     dirFinder.click()
@@ -40,7 +32,7 @@ module.exports = function verifyDirectory (options) {
     filesExist(files, options.verify)
   }
 
-  return html`<div class="${prefix} challenge-check-files-input">
+  return html`<div class="challenge-check-files-input">
     ${headerText ? html`<h2>${headerText}</h2>` : ''}
     ${descriptionText ? html`<p>${descriptionText}</p>` : ''}
     <button onclick=${onclick}>${buttonText}</button>

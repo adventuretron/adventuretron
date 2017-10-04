@@ -17,6 +17,7 @@ module.exports = function (state, prev, send) {
     <ul class="list pl0">
       ${keys.map(function (key) {
         var item = challenges[key]
+        console.log('item', item)
         var text = item.i18n[lang]
 
         var link = html`<a class="link pv0 hover-black focus-black gray" href="#" data-slug="${item.slug}" onclick=${onclick}>

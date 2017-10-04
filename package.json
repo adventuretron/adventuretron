@@ -4,9 +4,9 @@
   "description": "Create self-guided workshops using electron",
   "main": "main.js",
   "browser": "renderer/index.js",
-  "style": "renderer/css/bundle.css",
+  "style": "renderer/style.css",
   "scripts": {
-    "bundle": "node bin/bundle.js",
+    "bundle": "csskit bundle renderer/style.css -o renderer/css/bundle.css",
     "test": "tape tests/*.js"
   },
   "bin": {
@@ -44,8 +44,6 @@
     "choo-log": "^2.0.1",
     "create-html": "^1.1.0",
     "csskit": "^2.0.0",
-    "dom-css": "^2.1.0",
-    "domify": "^1.4.0",
     "each-async": "^1.1.1",
     "electron": "^1.7.8",
     "execspawn": "^1.0.1",
@@ -55,7 +53,6 @@
     "interactive-sandbox": "^1.1.1",
     "marked": "^0.3.6",
     "maxstache-stream": "^1.0.4",
-    "sheetify": "^5.2.0",
     "subcommand": "^2.0.4",
     "tachyons": "^4.5.5",
     "tar-fs": "^1.14.0",
